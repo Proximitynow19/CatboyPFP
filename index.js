@@ -12,10 +12,6 @@ const { REST } = require("@discordjs/rest");
 
 const rest = new REST({ version: "10" }).setToken(process.env.DISCORD_TOKEN);
 
-const moment = require("moment");
-
-const wait = 10 * 60 * 1000 + 1;
-
 const setAvatar = async () => {
   try {
     const src = (await catboy.image()).url;
@@ -53,25 +49,10 @@ const setAvatar = async () => {
   } catch (e) {
     console.log(e);
   }
-
-  let i = 0;
-
-  function w() {
-    process.stdout.clearLine(0);
-    process.stdout.cursorTo(0);
-    if (i < wait) {
-      i++;
-      process.stdout.write(
-        `Reset in ${moment.duration(wait - i, "milliseconds").humanize()}`
-      );
-      setTimeout(w, 1);
-    } else {
-      process.stdout.write("\n");
-      setAvatar();
-    }
-  }
-
-  setTimeout(w, 1);
 };
 
 setAvatar();
+
+setInterval(async () => {
+  await setAvatar();
+}, 10 * 60 * 1000 + 1);
