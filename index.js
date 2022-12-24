@@ -44,7 +44,7 @@ const setAvatar = async () => {
           authPrefix: "",
         });
 
-        console.log(`Done!`);
+        console.log(`Done! ${src}`);
       });
   } catch (e) {}
 };
