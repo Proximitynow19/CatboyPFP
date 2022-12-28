@@ -17,7 +17,7 @@ const { mkdirSync, rmdirSync, readFileSync } = require("fs");
 const rest = new REST({ version: "10" }).setToken(process.env.DISCORD_TOKEN);
 
 const library_count = 338;
-const use = 125;
+const use = 120;
 
 const images = getRandomElements([...Array(library_count).keys()], use);
 
