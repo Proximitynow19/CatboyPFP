@@ -17,7 +17,7 @@ const { mkdirSync, rmdirSync, readFileSync } = require("fs");
 const rest = new REST({ version: "10" }).setToken(process.env.DISCORD_TOKEN);
 
 const library_count = 338;
-const use = 120;
+const use = 125;
 
 const images = getRandomElements([...Array(library_count).keys()], use);
 
@@ -78,8 +78,10 @@ const setAvatar = async () => {
                         console.log("Encoding...");
 
                         exec(
-                          `ffmpeg -y -framerate 15 -i cats/%d.jpg -filter_complex "[0:v] setpts=1/(15*5), palettegen [p]; [0:v] [p] paletteuse" -loop 0 out.gif`,
+                          `ffmpeg -framerate 1 -y -i cats/%d.jpg -filter_complex "[0:v] palettegen [p]; [0:v] [p] paletteuse" -loop 0 out.gif`,
                           async (e, stde, stdo) => {
+                            console.log(e);
+
                             console.log(e);
                             console.log("Finished rendering.");
 
