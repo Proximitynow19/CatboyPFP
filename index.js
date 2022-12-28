@@ -78,7 +78,7 @@ const setAvatar = async () => {
                         console.log("Encoding...");
 
                         exec(
-                          `ffmpeg -y -framerate 0.2 -i cats/%d.jpg -filter_complex "[0:v] setpts=1/(0.2*5), palettegen [p]; [0:v] [p] paletteuse" -loop 0 out.gif`,
+                          `ffmpeg -y -framerate 15 -i cats/%d.jpg -filter_complex "[0:v] setpts=1/(15*5), palettegen [p]; [0:v] [p] paletteuse" -loop 0 out.gif`,
                           async (e, stde, stdo) => {
                             console.log(e);
                             console.log("Finished rendering.");
