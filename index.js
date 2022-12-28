@@ -80,9 +80,6 @@ const setAvatar = async () => {
                         exec(
                           `ffmpeg -framerate 1 -y -i cats/%d.jpg -filter_complex "[0:v] palettegen [p]; [0:v] [p] paletteuse" -loop 0 out.gif`,
                           async (e, stde, stdo) => {
-                            console.log(e);
-
-                            console.log(e);
                             console.log("Finished rendering.");
 
                             const banner = readFileSync("out.gif", "base64");
